@@ -1,2 +1,8 @@
 # Validations
-Validating users' input data using Reg-Ex  from the scratch
+Validating users' input data using Regular Expression from the scratch
+
+## Version
+1.0.0
+
+## LICENSE
+See the [LICENSE](LICENSE) for more information.
