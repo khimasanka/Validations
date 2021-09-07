@@ -30,7 +30,7 @@ public class ItemFormController implements Initializable {
 
     }
 
-    public void textFields_Key_Realeased(KeyEvent keyEvent) {
+    public void textFields_Key_Released(KeyEvent keyEvent) {
 
 
     }

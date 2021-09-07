@@ -47,7 +47,7 @@ public class CustomerFormController implements Initializable {
     }
 
 
-    public void textFields_Key_Realeased(KeyEvent keyEvent) {
+    public void textFields_Key_Released(KeyEvent keyEvent) {
         Object response = validate();
 
         if (response instanceof Boolean){
