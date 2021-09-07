@@ -41,8 +41,11 @@ public class CustomerFormController implements Initializable {
             Pattern compile = Pattern.compile(regEx);
             boolean matches = compile.matcher(typeText).matches();
 
-
-            System.out.println(matches);
+            if (matches){
+                txtCusID.getParent().setStyle("-fx-border-color: green");
+            }else{
+                txtCusID.getParent().setStyle("-fx-border-color: red");
+            }
 
 
 
