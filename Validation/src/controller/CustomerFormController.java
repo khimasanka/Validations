@@ -9,6 +9,7 @@ import javafx.scene.input.KeyEvent;
 import view.tdm.CustomerTM;
 
 import java.net.URL;
+import java.util.LinkedHashMap;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
@@ -26,69 +27,67 @@ public class CustomerFormController implements Initializable {
     public TableView<CustomerTM> tblCustomer;
     public JFXButton btnSaveCustomer;
 
+    LinkedHashMap<TextField, Pattern> allValidations = new LinkedHashMap<>();
+    Pattern idPattern = Pattern.compile("^(C00-)[0-9]{3,4}$");
+    Pattern namePattern = Pattern.compile("^[A-z ]{3,20}$");
+    Pattern addressPattern = Pattern.compile("^[A-z0-9/ ]{6,30}$");
+    Pattern salaryPattern = Pattern.compile("^[1-9][0-9]*([.][0-9]{2})?$");
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        validateInit();
+
+    }
+
+    private void validateInit() {
         btnSaveCustomer.setDisable(true);
+        allValidations.put(txtCusID, idPattern);
+        allValidations.put(txtCusName, namePattern);
+        allValidations.put(txtCusAddress, addressPattern);
+        allValidations.put(txtCusSalary, salaryPattern);
     }
 
 
     public void textFields_Key_Realeased(KeyEvent keyEvent) {
+        Object response = validate();
 
-        String cusIdRegEx = "^(C00-)[0-9]{3,4}$";
-        String cusNameRegEx = "^[A-z ]{3,20}$";
-        String cusAddressRegEx = "^[A-z0-9/ ]{6,30}$";
-        String cusSalaryRegEx = "^[1-9][0-9]*([.][0-9]{2})?$";
-
-        Pattern idPattern = Pattern.compile(cusIdRegEx);
-        Pattern namePattern = Pattern.compile(cusNameRegEx);
-        Pattern addressPattern = Pattern.compile(cusAddressRegEx);
-        Pattern salaryPattern = Pattern.compile(cusSalaryRegEx);
-
+        if (response instanceof Boolean){
+            btnSaveCustomer.setDisable(false);
+        }
 
         if (keyEvent.getCode() == KeyCode.ENTER) {
-            /*First lets check the customer id*/
-            String typedCustomerID = txtCusID.getText();
-            if (idPattern.matcher(typedCustomerID).matches()) {
-                txtCusID.getParent().setStyle("-fx-border-color: green");
-                txtCusName.requestFocus();
-
-                /*Check the name input*/
-                String typedCustomerName = txtCusName.getText();
-                if (namePattern.matcher(typedCustomerName).matches()) {
-                    txtCusName.getParent().setStyle("-fx-border-color: green");
-                    txtCusAddress.requestFocus();
-
-                    /*Check the Address*/
-                    String typedCustomerAddress = txtCusAddress.getText();
-                    if (addressPattern.matcher(typedCustomerAddress).matches()) {
-                        txtCusAddress.getParent().setStyle("-fx-border-color: green");
-                        txtCusSalary.requestFocus();
-
-//                    Check Customer Salary
-                        String typedCustomerSalary = txtCusSalary.getText();
-                        if (salaryPattern.matcher(typedCustomerSalary).matches()) {
-                            txtCusSalary.getParent().setStyle("-fx-border-color: green");
-                            btnSaveCustomer.requestFocus();
-
-                        } else {
-                            txtCusSalary.getParent().setStyle("-fx-border-color: red");
-                            txtCusSalary.requestFocus();
-                        }
-                    } else {
-                        txtCusAddress.requestFocus();
-                        txtCusAddress.getParent().setStyle("-fx-border-color: red");
-                    }
-                } else {
-                    txtCusName.getParent().setStyle("-fx-border-color: red");
-                    txtCusName.requestFocus();
-                }
-            } else {
-                txtCusID.getParent().setStyle("-fx-border-color: red");
-                txtCusID.requestFocus();
+            if (response instanceof TextField) {
+                TextField textField = (TextField) response;
+                textField.requestFocus();
             }
         }
     }
 
+    private Object validate() {
+        for (TextField textField : allValidations.keySet()) {
+            Pattern pattern = allValidations.get(textField);
+            if (!pattern.matcher(textField.getText()).matches()) {
+                /*if pattern does not match*/
+                addErrorToTheBorder(textField);
+                return textField;
+            }
+            removeError(textField);
+        }
+        return true;
+    }
+
+
+    private void removeError(TextField textField) {
+        textField.getParent().setStyle("-fx-border-color: green");
+    }
+
+    private void addErrorToTheBorder(TextField textField) {
+        textField.getParent().setStyle("-fx-border-color: red");
+        btnSaveCustomer.setDisable(true);
+    }
+
+
     /*01.Register One event for all text fields*/
+
 
 }
