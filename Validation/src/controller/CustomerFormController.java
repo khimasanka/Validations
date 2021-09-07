@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXButton;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import view.tdm.CustomerTM;
 
@@ -44,44 +45,48 @@ public class CustomerFormController implements Initializable {
         Pattern salaryPattern = Pattern.compile(cusSalaryRegEx);
 
 
-        /*First lets check the customer id*/
-        String typedCustomerID = txtCusID.getText();
-        if (idPattern.matcher(typedCustomerID).matches()) {
-            txtCusID.getParent().setStyle("-fx-border-color: green");
-            txtCusName.requestFocus();
-
-
-
-
-        }else{
-            txtCusID.getParent().setStyle("-fx-border-color: red");
-            txtCusID.requestFocus();
-        }
-
-
-
-
-
-
-
-      /*  String regEx = "^(C00-)[0-9]{3,4}$";
-        String typeText = txtCusID.getText();
-        Pattern compile = Pattern.compile(regEx);
-        boolean matches = compile.matcher(typeText).matches();
-
-        if (matches){
-            txtCusID.getParent().setStyle("-fx-border-color: green");
-            btnSaveCustomer.setDisable(false);
-        }else{
-            txtCusID.getParent().setStyle("-fx-border-color: red");
-            btnSaveCustomer.setDisable(true);
-        }
-
         if (keyEvent.getCode() == KeyCode.ENTER) {
-            if (matches){
+            /*First lets check the customer id*/
+            String typedCustomerID = txtCusID.getText();
+            if (idPattern.matcher(typedCustomerID).matches()) {
+                txtCusID.getParent().setStyle("-fx-border-color: green");
                 txtCusName.requestFocus();
+
+                /*Check the name input*/
+                String typedCustomerName = txtCusName.getText();
+                if (namePattern.matcher(typedCustomerName).matches()) {
+                    txtCusName.getParent().setStyle("-fx-border-color: green");
+                    txtCusAddress.requestFocus();
+
+                    /*Check the Address*/
+                    String typedCustomerAddress = txtCusAddress.getText();
+                    if (addressPattern.matcher(typedCustomerAddress).matches()) {
+                        txtCusAddress.getParent().setStyle("-fx-border-color: green");
+                        txtCusSalary.requestFocus();
+
+//                    Check Customer Salary
+                        String typedCustomerSalary = txtCusSalary.getText();
+                        if (salaryPattern.matcher(typedCustomerSalary).matches()) {
+                            txtCusSalary.getParent().setStyle("-fx-border-color: green");
+                            btnSaveCustomer.requestFocus();
+
+                        } else {
+                            txtCusSalary.getParent().setStyle("-fx-border-color: red");
+                            txtCusSalary.requestFocus();
+                        }
+                    } else {
+                        txtCusAddress.requestFocus();
+                        txtCusAddress.getParent().setStyle("-fx-border-color: red");
+                    }
+                } else {
+                    txtCusName.getParent().setStyle("-fx-border-color: red");
+                    txtCusName.requestFocus();
+                }
+            } else {
+                txtCusID.getParent().setStyle("-fx-border-color: red");
+                txtCusID.requestFocus();
             }
-        }*/
+        }
     }
 
     /*01.Register One event for all text fields*/
