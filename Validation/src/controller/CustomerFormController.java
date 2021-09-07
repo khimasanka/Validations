@@ -36,7 +36,6 @@ public class CustomerFormController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         validateInit();
-
     }
 
     private void validateInit() {
@@ -61,6 +60,55 @@ public class CustomerFormController implements Initializable {
                 textField.requestFocus();
             }
         }
+
+        btnSaveCustomer.setDisable(true);
+
+    /*    if (keyEvent.getCode() == KeyCode.ENTER) {
+            if (idPattern.matcher(txtCusID.getText()).matches()) {
+                txtCusName.requestFocus();
+                if (namePattern.matcher(txtCusName.getText()).matches()) {
+                    txtCusAddress.requestFocus();
+                    if (addressPattern.matcher(txtCusAddress.getText()).matches()) {
+                        txtCusSalary.requestFocus();
+                        if (salaryPattern.matcher(txtCusSalary.getText()).matches()) {
+                            btnSaveCustomer.requestFocus();
+                            btnSaveCustomer.setDisable(false);
+                        } else {
+                            txtCusSalary.requestFocus();
+                        }
+                    } else {
+                        txtCusAddress.requestFocus();
+                    }
+                } else {
+                    txtCusName.requestFocus();
+                }
+            } else {
+                txtCusID.requestFocus();
+            }
+        }
+
+        if (idPattern.matcher(txtCusID.getText()).matches()) {
+            txtCusID.getParent().setStyle("-fx-border-color: green");
+            if (namePattern.matcher(txtCusName.getText()).matches()) {
+                txtCusName.getParent().setStyle("-fx-border-color: green");
+                if (addressPattern.matcher(txtCusAddress.getText()).matches()) {
+                    txtCusAddress.getParent().setStyle("-fx-border-color: green");
+                    if (salaryPattern.matcher(txtCusSalary.getText()).matches()) {
+                        txtCusSalary.getParent().setStyle("-fx-border-color: green");
+                        btnSaveCustomer.setDisable(false);
+                    } else {
+                        txtCusSalary.getParent().setStyle("-fx-border-color: red");
+                    }
+                } else {
+                    txtCusAddress.getParent().setStyle("-fx-border-color: red");
+                }
+            } else {
+                txtCusName.getParent().setStyle("-fx-border-color: red");
+            }
+        } else {
+            txtCusID.getParent().setStyle("-fx-border-color: red");
+        }*/
+
     }
 
     private Object validate() {
@@ -91,3 +139,4 @@ public class CustomerFormController implements Initializable {
 
 
 }
+
