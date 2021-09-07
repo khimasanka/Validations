@@ -4,14 +4,11 @@ import com.jfoenix.controls.JFXButton;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import view.tdm.ItemTM;
 
 import java.net.URL;
-import java.util.LinkedHashMap;
 import java.util.ResourceBundle;
-import java.util.regex.Pattern;
 
 /**
  * @author : Sanu Vithanage
