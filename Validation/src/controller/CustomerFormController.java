@@ -4,7 +4,6 @@ import com.jfoenix.controls.JFXButton;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import view.tdm.CustomerTM;
 
@@ -34,7 +33,36 @@ public class CustomerFormController implements Initializable {
 
     public void textFields_Key_Realeased(KeyEvent keyEvent) {
 
-        System.out.println(keyEvent.getCode());
+        String cusIdRegEx = "^(C00-)[0-9]{3,4}$";
+        String cusNameRegEx = "^[A-z ]{3,20}$";
+        String cusAddressRegEx = "^[A-z0-9/ ]{6,30}$";
+        String cusSalaryRegEx = "^[1-9][0-9]*([.][0-9]{2})?$";
+
+        Pattern idPattern = Pattern.compile(cusIdRegEx);
+        Pattern namePattern = Pattern.compile(cusNameRegEx);
+        Pattern addressPattern = Pattern.compile(cusAddressRegEx);
+        Pattern salaryPattern = Pattern.compile(cusSalaryRegEx);
+
+
+        /*First lets check the customer id*/
+        String typedCustomerID = txtCusID.getText();
+        if (idPattern.matcher(typedCustomerID).matches()) {
+            txtCusID.getParent().setStyle("-fx-border-color: green");
+            txtCusName.requestFocus();
+
+
+
+
+        }else{
+            txtCusID.getParent().setStyle("-fx-border-color: red");
+            txtCusID.requestFocus();
+        }
+
+
+
+
+
+
 
       /*  String regEx = "^(C00-)[0-9]{3,4}$";
         String typeText = txtCusID.getText();
