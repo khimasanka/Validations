@@ -16,7 +16,7 @@
          <children>
             <AnchorPane prefHeight="42.0" prefWidth="438.0" styleClass="textPane">
                <children>
-                  <TextField fx:id="txtCusID" layoutX="13.0" layoutY="8.0" prefHeight="28.0" prefWidth="406.0" promptText="C00-001" styleClass="textField" />
+                  <TextField fx:id="txtCusID" layoutX="13.0" layoutY="8.0" onKeyReleased="#cusID_KeyPress" prefHeight="28.0" prefWidth="406.0" promptText="C00-001" styleClass="textField" />
                   <Label layoutX="2.0" layoutY="-9.0" styleClass="textLabel" text="Customer ID" />
                </children>
                <VBox.margin>
