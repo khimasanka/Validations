@@ -31,9 +31,12 @@ public class CustomerFormController implements Initializable {
         btnSaveCustomer.setDisable(true);
     }
 
-    public void cusID_KeyPress(KeyEvent keyEvent) {
 
-        String regEx = "^(C00-)[0-9]{3,4}$";
+    public void textFields_Key_Realeased(KeyEvent keyEvent) {
+
+        System.out.println(keyEvent.getCode());
+
+      /*  String regEx = "^(C00-)[0-9]{3,4}$";
         String typeText = txtCusID.getText();
         Pattern compile = Pattern.compile(regEx);
         boolean matches = compile.matcher(typeText).matches();
@@ -50,6 +53,9 @@ public class CustomerFormController implements Initializable {
             if (matches){
                 txtCusName.requestFocus();
             }
-        }
+        }*/
     }
+
+    /*01.Register One event for all text fields*/
+
 }

@@ -16,7 +16,7 @@
          <children>
             <AnchorPane prefHeight="42.0" prefWidth="438.0" styleClass="textPane">
                <children>
-                  <TextField fx:id="txtCusID" layoutX="13.0" layoutY="8.0" onKeyReleased="#cusID_KeyPress" prefHeight="28.0" prefWidth="406.0" promptText="C00-001" styleClass="textField" />
+                  <TextField fx:id="txtCusID" layoutX="13.0" layoutY="8.0" onKeyReleased="#textFields_Key_Realeased" prefHeight="28.0" prefWidth="406.0" promptText="C00-001" styleClass="textField" />
                   <Label layoutX="2.0" layoutY="-9.0" styleClass="textLabel" text="Customer ID" />
                </children>
                <VBox.margin>
@@ -25,7 +25,7 @@
             </AnchorPane>
             <AnchorPane prefHeight="42.0" prefWidth="438.0" styleClass="textPane">
                <children>
-                  <TextField fx:id="txtCusName" layoutX="13.0" layoutY="8.0" prefHeight="28.0" prefWidth="406.0" promptText="Ranjith Suranga" styleClass="textField" />
+                  <TextField fx:id="txtCusName" layoutX="13.0" layoutY="8.0" onKeyReleased="#textFields_Key_Realeased" prefHeight="28.0" prefWidth="406.0" promptText="Ranjith Suranga" styleClass="textField" />
                   <Label layoutX="2.0" layoutY="-9.0" styleClass="textLabel" text="Customer Name" />
                </children>
                <VBox.margin>
@@ -34,7 +34,7 @@
             </AnchorPane>
             <AnchorPane prefHeight="42.0" prefWidth="438.0" styleClass="textPane">
                <children>
-                  <TextField fx:id="txtCusAddress" layoutX="13.0" layoutY="8.0" prefHeight="28.0" prefWidth="406.0" promptText="Colombo 7" styleClass="textField" />
+                  <TextField fx:id="txtCusAddress" layoutX="13.0" layoutY="8.0" onKeyReleased="#textFields_Key_Realeased" prefHeight="28.0" prefWidth="406.0" promptText="Colombo 7" styleClass="textField" />
                   <Label layoutX="2.0" layoutY="-9.0" styleClass="textLabel" text="Customer Address" />
                </children>
                <VBox.margin>
@@ -43,7 +43,7 @@
             </AnchorPane>
             <AnchorPane prefHeight="42.0" prefWidth="438.0" styleClass="textPane">
                <children>
-                  <TextField fx:id="txtCusSalary" layoutX="13.0" layoutY="8.0" prefHeight="28.0" prefWidth="406.0" promptText="1000.00" styleClass="textField" />
+                  <TextField fx:id="txtCusSalary" layoutX="13.0" layoutY="8.0" onKeyReleased="#textFields_Key_Realeased" prefHeight="28.0" prefWidth="406.0" promptText="1000.00" styleClass="textField" />
                   <Label layoutX="2.0" layoutY="-9.0" styleClass="textLabel" text="Customer Salary" />
                </children>
                <VBox.margin>
