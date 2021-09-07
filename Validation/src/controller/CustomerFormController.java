@@ -28,27 +28,28 @@ public class CustomerFormController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
-
+        btnSaveCustomer.setDisable(true);
     }
 
     public void cusID_KeyPress(KeyEvent keyEvent) {
+
+        String regEx = "^(C00-)[0-9]{3,4}$";
+        String typeText = txtCusID.getText();
+        Pattern compile = Pattern.compile(regEx);
+        boolean matches = compile.matcher(typeText).matches();
+
+        if (matches){
+            txtCusID.getParent().setStyle("-fx-border-color: green");
+            btnSaveCustomer.setDisable(false);
+        }else{
+            txtCusID.getParent().setStyle("-fx-border-color: red");
+            btnSaveCustomer.setDisable(true);
+        }
+
         if (keyEvent.getCode() == KeyCode.ENTER) {
-
-            String regEx = "^(C00-)[0-9]{3,4}$";
-            String typeText = txtCusID.getText();
-
-            Pattern compile = Pattern.compile(regEx);
-            boolean matches = compile.matcher(typeText).matches();
-
             if (matches){
-                txtCusID.getParent().setStyle("-fx-border-color: green");
-            }else{
-                txtCusID.getParent().setStyle("-fx-border-color: red");
+                txtCusName.requestFocus();
             }
-
-
-
         }
     }
 }
